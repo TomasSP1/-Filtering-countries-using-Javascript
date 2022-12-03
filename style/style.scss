@@ -1,0 +1,149 @@
+@import 'variables', 'mixins';
+
+* {
+    @include html-main();
+    body {
+        @include body-main();
+        .btn-container {
+            @include flex-wrap();
+            gap: $main-gap;
+            margin-top: $margin-top;
+            button {
+                height: 50px;
+                width: 200px;
+                font-size: 1em;
+                font-weight: bold;
+                cursor: pointer;
+                background: $btn-background-color;
+                border-radius: $border-radius;
+                box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+                backdrop-filter: blur(7.7px);
+                -webkit-backdrop-filter: blur(7.7px);
+                border: 2px solid $black-color;
+            }
+            button:hover {
+                background: $blue-main-color;
+                transition: .3s;
+                transform: scale(1.1);
+            }
+        }
+        h1 {
+            text-align: center;
+            font-size: 4em;
+            color: $black-color;
+            margin-top: $margin-top;
+        }
+        h2 {
+            font-size: 1em;
+            line-height: 25px;
+            padding: 10px 5px;
+        }
+        #main_div {
+            @include flex-wrap();
+            margin-top: $margin-top;
+            width: $width-100;
+            gap: $main-gap;
+        }
+        .new_card {
+            width: 205px;
+            height: 300px;
+            position: relative;
+            display: inline-grid;
+            transition: all 1s linear;
+            transform-style: preserve-3d;
+            margin: 5px;
+            text-align: center;
+            .front, .back {
+                border: 2px solid $black-color;
+                height: 100%;
+                width: $width-100;
+                @include simple-flex();
+                flex-direction: column;
+                border-radius: $border-radius;
+                position: absolute;
+            }
+            .front {
+                background: $white-color;
+                z-index: 2;
+                backface-visibility: hidden;
+                .continent-name {
+                    position: absolute;
+                    top:-8px;
+                    right: 3px;
+                    font-size: .8em;
+                }
+                .country_name {
+                    font-size: 1.3em;
+                    padding-top: 30px;
+                }
+                img {
+                    width: 200px;
+                    height: 100px;
+                    border: 1px solid $black-color;
+                }
+            }
+            .back {
+                background: $blue-main-color;
+                z-index: 1;
+                transform: rotateY(180deg);
+                color: $white-color;
+            }
+        }
+        .new_card:hover {
+            transform: rotateY(180deg);
+        }
+    }
+}
+
+/* changes the scrollbar to look more aesthetic */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #ababab;
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: padding-box; 
+}
+
+::-webkit-scrollbar-thumb:hover{
+    border: 0;
+}
+
+/* making mobile friendly */
+
+@media (max-width: 600px) {
+    #main_div {
+        width: 100%;
+    }
+    h1 {
+        font-size: 1em;
+    }
+    .new_card {
+        width: 505px;
+        height: 600px;
+    }
+    img {
+        width: 500px;
+        height: 300px;
+    }
+    h2 {
+        font-size: 3em;
+        line-height: 50px;
+        padding: 10px 5px;
+    }
+    .btn-container {
+        width: 100%;
+        align-items: center;
+        gap: 1px;
+        
+    }
+    button {
+        width: 100px;
+        margin-top: 5px;
+    }
+}
+
+
