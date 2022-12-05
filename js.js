@@ -6,7 +6,7 @@ const btnContainer = document.querySelector('.btn-container');
 
 let continents = ['all'];
 
-for (let i = 0; i < 250; i++) {
+for (let i = 0; i < allCountries.length; i++) {
 
     // In the loops we are accessing object values, making new elements and adding them to my_main_div
     // new main elements are created for the cards
